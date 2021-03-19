@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Component
 public class SenderBot implements Runnable {
-    public final String name="Hey u yo wazup";
+    public final String name="Bot";
     public final Queue<Object> sendQueue = new ConcurrentLinkedQueue<>();
     public final Queue<Object> receiveQueue = new ConcurrentLinkedQueue<>();
     private Scanner scanner=new Scanner(System.in);
