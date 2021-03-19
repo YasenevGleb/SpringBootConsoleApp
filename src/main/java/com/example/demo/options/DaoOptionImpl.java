@@ -39,6 +39,7 @@ public class DaoOptionImpl extends AbstractOption {
                     .add(lectorsService.getStatics(parsedCommand.getText()));
 
         }
+        //TODO : return some sticker
         return " ";
     }
 

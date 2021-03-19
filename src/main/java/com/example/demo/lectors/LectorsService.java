@@ -21,7 +21,7 @@ public class LectorsService {
             mess.append(" The average salary of ").append(name).append(" is ").append(avg.get());
             return mess.toString();
         }
-        return "Sorry, average is 0 or check the correctness of the department name - " + name;
+        return "Sorry, check the correctness of the department name - " + name;
 
     }
     public String countOfEmpl(String name){

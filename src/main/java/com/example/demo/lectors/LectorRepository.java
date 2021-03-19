@@ -13,19 +13,18 @@ public interface LectorRepository extends JpaRepository<Lector,Long> {
             "from lector l " +
             "join department d " +
             "on d.department_id=l.department_id " +
-            "group by d.name " +
-            "having d.name= :department_name ";
+            "where d.name= :department_name ";
 
     String sqlStats="select l.degree,count(*) " +
             "from lector l " +
             "join department d " +
             "on d.department_id=l.department_id "+
-            "group by l.degree,d.name " +
-            "having d.name= :department_name";
+            "where d.name= :department_name" +
+            "group by l.degree";
 
     String sqlAvgSalary="select avg(l.salary) " +
             "from lector l " +
-            "join (select * from department where name=:department_name) j " +
+            "join (select department_id from department where name=:department_name) j " +
             "on l.department_id=j.department_id ";
     String sqlGlobalSearch="select name,last_name " +
             "from lector  " +
@@ -41,7 +40,7 @@ public interface LectorRepository extends JpaRepository<Lector,Long> {
     Optional<Long> avgSalary(@Param("department_name") String department_name);
 
     @Query(value = sqlGlobalSearch, nativeQuery = true)
-    List<Object[]> globalSearch(@Param("word") String word ) ;
+    List<Object[]> globalSearch(@Param("word") String word );
 
 
 
