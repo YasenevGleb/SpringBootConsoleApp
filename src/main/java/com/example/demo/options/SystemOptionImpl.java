@@ -1,24 +1,22 @@
 package com.example.demo.options;
 
-import com.example.demo.botImlp.SenderBot;
 import com.example.demo.commands.Command;
 import com.example.demo.commands.ParsedCommand;
 
-public class SystemOptionImpl extends AbstractOption {
+public class SystemOptionImpl implements AbstractOption {
     private final String END_LINE = "\n";
-    public SystemOptionImpl(SenderBot senderBot) {
-        super(senderBot);
+    public SystemOptionImpl() {
+
     }
 
     @Override
     public String operate(ParsedCommand parsedCommand) {
         Command command = parsedCommand.getCommand();
-        switch (command){
-            case HELP : senderBot.sendQueue.add(getMessageHelp());break;
-            case START : senderBot.sendQueue.add(getMessageStart());break;
-
-        }
-        return "";
+        return switch (command) {
+            case HELP -> getMessageHelp();
+            case START -> getMessageStart();
+            default -> "";
+        };
 
     }
     private String getMessageStart() {

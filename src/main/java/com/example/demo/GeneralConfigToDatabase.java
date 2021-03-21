@@ -13,6 +13,7 @@ import java.util.List;
 
 @Configuration
 public class GeneralConfigToDatabase {
+
     @Bean
     public CommandLineRunner commandLineRunnerForDatabase(LectorRepository lectorRepository,
                                                           DepartmentRepository departmentRepository){
@@ -24,11 +25,11 @@ public class GeneralConfigToDatabase {
         Lector lectorEx4=new Lector("Nem","Gluh", Degree.ASSOCIATE_PROFESSOR,firstDepartment,100000L);
         Lector lectorEx5=new Lector("LeBlanc","Smith", Degree.ASSISTANT,firstDepartment,100000L);
         Lector lectorEx6=new Lector("Ronin","Smith", Degree.ASSISTANT,secondDepartment,12312L);
-        return args -> {
-            departmentRepository.saveAll(List.of(secondDepartment,firstDepartment));
-            lectorRepository.saveAll(List.of(lectorEx1,lectorEx2,lectorEx3,lectorEx4,lectorEx5,lectorEx6));
-        };
 
+        return  args -> {
+            departmentRepository.saveAll(List.of(secondDepartment, firstDepartment));
+            lectorRepository.saveAll(List.of(lectorEx1, lectorEx2, lectorEx3, lectorEx4, lectorEx5, lectorEx6));
+        };
 
     }
 

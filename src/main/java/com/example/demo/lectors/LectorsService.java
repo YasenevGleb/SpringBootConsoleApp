@@ -39,7 +39,7 @@ public class LectorsService {
         return "Does not have any statistics for " + name;
     }
     public String globalSearch(String word){
-        List<Object[]> objects = lectorRepository.globalSearch('%' + word + '%');
+        List<Object[]> objects = lectorRepository.globalSearch( word );
         if(objects.size()!=0){
             StringBuilder stringBuilder=new StringBuilder();
             objects.forEach(n-> {

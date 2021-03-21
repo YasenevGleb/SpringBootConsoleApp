@@ -3,7 +3,6 @@ package com.example.demo.departments;
 import com.example.demo.lectors.Lector;
 import com.sun.istack.NotNull;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.List;
 

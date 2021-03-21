@@ -1,5 +1,8 @@
 package com.example.demo.commands;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Parser {
 
     private final String PREFIX_FOR_COMMAND="/";
@@ -13,7 +16,7 @@ public class Parser {
         if (isCommand(commandAndText.getKey())) {
             String commandForParse = cutCommandFromFullText(commandAndText.getKey());
             Command commandFromText = getCommandFromText(commandForParse);
-            result.setText(commandAndText.getValue());
+            result.setText(commandAndText.getValue().trim());
             result.setCommand(commandFromText);
 
         }
@@ -21,7 +24,7 @@ public class Parser {
     }
 
 
-    private Pair<String, String> getDelimitedCommand(String trimText) {
+    public Pair<String, String> getDelimitedCommand(String trimText) {
         Pair<String, String> commandText;
 
         if (trimText.contains(" ")) {
@@ -32,11 +35,11 @@ public class Parser {
     }
 
 
-    private boolean isCommand(String text) {
-        return text.startsWith(PREFIX_FOR_COMMAND);
+    public boolean isCommand(String text) {
+        return text.startsWith(PREFIX_FOR_COMMAND) && !text.startsWith(PREFIX_FOR_COMMAND,1);
     }
 
-    private Command getCommandFromText(String text) {
+    public Command getCommandFromText(String text) {
         String upperCaseText = text.toUpperCase().trim();
         Command command = Command.NONE;
         try {
@@ -46,7 +49,7 @@ public class Parser {
         }
         return command;
     }
-    private String cutCommandFromFullText(String text) {
+    public String cutCommandFromFullText(String text) {
         return text.substring(1);
     }
 }
